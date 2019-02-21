@@ -1,31 +1,74 @@
 {
-  "name": "react-use-idb",
-  "version": "1.0.1",
-  "description": "Use indexDB react hook",
+  "name": "use-idb-keyval",
+  "version": "1.0.2",
+  "description": "idb-keyval React Hook",
   "main": "index.js",
   "scripts": {
-    "test": "node -r esm test.js"
+    "build": "babel src --out-dir dist --ignore 'src/__tests__'",
+    "watch": "nodemon --watch src --exec \"yarn build\"",
+    "test": "jest"
   },
   "peerDependencies": {
-    "react": ">= 16.7.0"
+    "react": ">= 16.13.1",
+    "react-dom": "^16.13.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kigiri/react-use-idb.git"
+    "url": "git+https://github.com/brandonpittman/use-idb-keyval.git"
   },
   "keywords": [
     "indexDB",
     "react-hook"
   ],
-  "author": "kigiri",
+  "author": "brandonpittman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kigiri/react-use-idb/issues"
+    "url": "https://github.com/brandonpittman/use-idb-keyval/issues"
   },
-  "homepage": "https://github.com/kigiri/react-use-idb#readme",
+  "homepage": "https://github.com/brandonpittman/use-idb-keyval#readme",
   "devDependencies": {
-    "esm": "^3.0.84",
-    "puppeteer": "^1.10.0",
-    "react": "^16.7.0-alpha.0"
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@testing-library/dom": "^7.24.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^3.4.1",
+    "@testing-library/user-event": "^12.1.5",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.10.1",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^24.0.1",
+    "eslint-plugin-jest-dom": "^3.2.3",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "eslint-plugin-testing-library": "^3.8.0",
+    "husky": ">=4",
+    "jest": "^26.4.2",
+    "lint-staged": ">=10",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^4.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js}": "eslint --cache --fix"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "babel-core": "^7.0.0-bridge.0"
   }
 }
