@@ -1,8 +1,6 @@
-# react-use-idb (`useIdb`)
+# use-idb-keyval
 
-React side-effect hook that manages a single `indexDB` item.
-
-A drop-in remplacement over `useLocalStorage`.
+React hook to help you use IndexDB. This acts as a drop-in replacement for `useLocalStorage`.
 
 ## Why ?
 
@@ -15,26 +13,26 @@ Instead, we can rely on `indexDB` for structural cloning.
 ## Usage
 
 ```jsx
-import { useIdb } from 'react-use-idb'
+import useIdb from "use-idb-keyval";
 
 const Demo = () => {
-  const [value, setValue] = useIdb('my-key', 'foo')
+  const [value, setValue] = useIdb("my-key", "foo");
 
   return (
     <div>
       <div>Value: {value}</div>
-      <button onClick={() => setValue('bar')}>bar</button>
-      <button onClick={() => setValue('baz')}>baz</button>
+      <button onClick={() => setValue("bar")}>bar</button>
+      <button onClick={() => setValue("baz")}>baz</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 ## Reference
 
 ```js
-useIdb(key)
-useIdb(key, initialValue)
+useIdb(key);
+useIdb(key, initialValue);
 ```
 
 - `key` &mdash; `indexDB` item key to manage.
