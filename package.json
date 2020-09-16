@@ -1,6 +1,6 @@
 {
   "name": "use-idb-keyval",
-  "version": "1.0.2",
+  "version": "0.0.1",
   "description": "idb-keyval React Hook",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -17,6 +17,9 @@
     "type": "git",
     "url": "git+https://github.com/brandonpittman/use-idb-keyval.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "indexDB",
     "react-hook"
