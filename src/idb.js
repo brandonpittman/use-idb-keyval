@@ -1,5 +1,5 @@
 const dbp = new Promise((resolve, reject) => {
-  const openreq = window.indexedDB.open("use-idb", 1);
+  const openreq = window.indexedDB.open("use-idb-keyval", 1);
   openreq.onerror = () => reject(openreq.error);
   openreq.onsuccess = () => resolve(openreq.result);
   openreq.onupgradeneeded = () => openreq.result.createObjectStore("idb");

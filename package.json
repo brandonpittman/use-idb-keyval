@@ -5,7 +5,7 @@
   "source": "src/index.js",
   "main": "dist/index.js",
   "scripts": {
-    "build": "microbundle",
+    "build": "babel src --out-dir dist --ignore 'src/__tests__'",
     "dev": "microbundle watch",
     "test": "jest"
   },
