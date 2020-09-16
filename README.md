@@ -1,6 +1,8 @@
 # use-idb-keyval
 
-React hook to help you use IndexDB. This acts as a drop-in replacement for `useLocalStorage`. It's a fork of [kigiri/react-use-idb](https://github.com/kigiri/react-use-idb/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
+React hook to help you use IndexDB. This acts as a drop-in replacement for `useLocalStorage`. 
+
+This is a fork of [kigiri/react-use-idb](https://github.com/kigiri/react-use-idb/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc). The original package hadn't been updated in over a year and no activity seemed to be happening. I wanted to fix a bug and use it myself, so here we are. 😀
 
 ## Why ?
 
