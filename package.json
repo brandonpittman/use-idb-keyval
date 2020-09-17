@@ -62,6 +62,8 @@
     "prettier": "^2.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "@babel/cli": "^7.11.6",
+    "babel-core": "^7.0.0-bridge.0",
     "typescript": "^4.0.2"
   },
   "husky": {
@@ -72,8 +74,5 @@
   "lint-staged": {
     "*.{ts,js}": "eslint --cache --fix"
   },
-  "dependencies": {
-    "@babel/cli": "^7.11.6",
-    "babel-core": "^7.0.0-bridge.0"
-  }
+  "dependencies": {}
 }
