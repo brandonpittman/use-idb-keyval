@@ -6,6 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist --ignore 'src/__tests__'",
+    "install": "npm run build",
     "dev": "microbundle watch",
     "test": "jest"
   },
