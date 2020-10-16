@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { get, set } from "./idb.js";
 
-export { set };
+export { get, set };
 
 export default function useIdbKeyval(key, initialState) {
   const [item, setItem] = useState(initialState);
