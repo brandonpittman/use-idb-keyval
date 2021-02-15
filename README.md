@@ -4,11 +4,7 @@ React hook to help you use IndexedDB as a drop-in replacement for `useLocalStora
 
 ## Why ?
 
-`LocalStorage` is synchronous and has [performances issues](https://hacks.mozilla.org/2012/03/there-is-no-simple-solution-for-local-storage/)
-
-`LocalStorage` is also limited, only storing strings and does not provide a default mechanisme for serializing / deserializing your data.
-
-Instead, we can rely on `indexDB` for structural cloning.
+`LocalStorage` is synchronous and has [performances issues](https://hacks.mozilla.org/2012/03/there-is-no-simple-solution-for-local-storage/). `LocalStorage` is also limited, only storing strings and does not provide a default mechanisme for serializing / deserializing your data.
 
 ## Usage
 
