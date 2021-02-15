@@ -2,8 +2,6 @@
 
 React hook to help you use IndexedDB as a drop-in replacement for `useLocalStorage`. 
 
-This is a fork of [kigiri/react-use-idb](https://github.com/kigiri/react-use-idb/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc). The original package hadn't been updated in over a year and no activity seemed to be happening. I wanted to fix a bug and use it myself, so here we are. 😀
-
 ## Why ?
 
 `LocalStorage` is synchronous and has [performances issues](https://hacks.mozilla.org/2012/03/there-is-no-simple-solution-for-local-storage/)
