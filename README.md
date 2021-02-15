@@ -15,11 +15,11 @@ const Demo = () => {
   const [value, setValue] = useIdb("character-name", "Geralt");
 
   return (
-    <div>
+    <>
       <p>My favorite character from The Witcher is {value}.</p>
       <button onClick={() => setValue("Yennefer")}>Yennefer</button>
       <button onClick={() => setValue("Triss")}>Triss</button>
-    </div>
+    </>
   );
 };
 ```
