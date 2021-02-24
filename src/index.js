@@ -11,8 +11,9 @@ export default function useIdbKeyval(key, initialState, initFn) {
       if (value) {
         setItem(value);
       } else {
-        setItem(initFn ? initFn(initialState) : initialState);
-        set(key, initFn ? initFn(initialState) : initialState);
+        const initFnResult = initFn ? initFn(initialState) : null;
+        setItem(initFnResult ? initFnResult : initialState);
+        set(key, initFnResult ? initFnResult : initialState);
       }
     }
   }, [key]);
