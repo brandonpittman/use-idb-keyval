@@ -2,11 +2,10 @@
   "name": "use-idb-keyval",
   "version": "0.2.2",
   "description": "idb-keyval React Hook",
-  "source": "src/index.js",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist --ignore 'src/__tests__'",
-    "dev": "microbundle watch --external react --sourcemap false --no-compress --jsx React.createElement",
+    "dev": "babel src --watch --out-dir dist --ignore 'src/__tests__'",
     "test": "jest"
   },
   "peerDependencies": {
@@ -72,6 +71,5 @@
   },
   "lint-staged": {
     "*.{ts,js}": "eslint --cache --fix"
-  },
-  "dependencies": {}
+  }
 }
