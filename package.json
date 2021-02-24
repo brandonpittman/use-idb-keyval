@@ -1,6 +1,6 @@
 {
   "name": "use-idb-keyval",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "idb-keyval React Hook",
   "main": "./dist/index.js",
   "scripts": {
