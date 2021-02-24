@@ -1,8 +1,10 @@
 const dbp = new Promise((resolve, reject) => {
-  const openreq = window.indexedDB.open("use-idb-keyval", 1);
-  openreq.onerror = () => reject(openreq.error);
-  openreq.onsuccess = () => resolve(openreq.result);
-  openreq.onupgradeneeded = () => openreq.result.createObjectStore("idb");
+  if (typeof window !== "undefined") {
+    const openreq = window.indexedDB.open("use-idb-keyval", 1);
+    openreq.onerror = () => reject(openreq.error);
+    openreq.onsuccess = () => resolve(openreq.result);
+    openreq.onupgradeneeded = () => openreq.result.createObjectStore("idb");
+  }
 });
 
 export const call = async (type, method, ...args) => {
