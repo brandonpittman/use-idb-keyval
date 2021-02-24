@@ -16,3 +16,5 @@ export default function useIdbKeyval(key, initialState) {
     },
   ];
 }
+
+export { get, set };
