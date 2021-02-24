@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist --ignore 'src/__tests__'",
-    "dev": "microbundle watch",
+    "dev": "microbundle watch --external react --sourcemap false --no-compress --jsx React.createElement",
     "test": "jest"
   },
   "peerDependencies": {
