@@ -1,10 +1,6 @@
 # use-idb-keyval
 
-React hook to help you use IndexedDB as a drop-in replacement for `useLocalStorage`. 
-
-## Why ?
-
-`LocalStorage` is synchronous and has [performances issues](https://hacks.mozilla.org/2012/03/there-is-no-simple-solution-for-local-storage/). `LocalStorage` is also limited, only storing strings and does not provide a default mechanisme for serializing / deserializing your data.
+This is a React hook to help you use IndexedDB as an asynchronous replacement for `useLocalStorage`. 
 
 ## Usage
 
@@ -12,26 +8,30 @@ React hook to help you use IndexedDB as a drop-in replacement for `useLocalStora
 import useIdb from "use-idb-keyval";
 
 const Demo = () => {
-  const [value, setValue] = useIdb("character-name", "Geralt");
+  const [value, setValue, resetValue] = useIdb("count", 0);
 
   return (
     <>
-      <p>My favorite character from The Witcher is {value}.</p>
-      <button onClick={() => setValue("Yennefer")}>Yennefer</button>
-      <button onClick={() => setValue("Triss")}>Triss</button>
+      <p>Count: {value}.</p>
+      <button onClick={() => setValue(previousValue => previousValue + 1)}>Increment</button>
+      <button onClick={resetValue}>Reset</button>
     </>
   );
 };
 ```
+
+WHen using the setter function, you can either pass a new value or a function that takes the previous value.
 
 ## API
 
 ```javascript
 useIdb(key);
 useIdb(key, initialValue);
+useIdb(key, initialValue, (inititalValue) => { doSomething(initialValue};
 ```
 
 - `key` &mdash; `indexDB` item key to register
 - `initialValue` &mdash; initial value to set, if value in the `indexDB` item is empty.
+- You can pass a function as the third parameter to do a computation with the initial value.
 
 > Inspired by [idb-keyval](https://github.com/jakearchibald/idb-keyval)
