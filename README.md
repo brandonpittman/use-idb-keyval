@@ -27,7 +27,7 @@ WHen using the setter function, you can either pass a new value or a function th
 ```javascript
 useIdb(key);
 useIdb(key, initialValue);
-useIdb(key, initialValue, (inititalValue) => { doSomething(initialValue};
+useIdb(key, initialValue, (inititalValue) => { doSomething(initialValue});
 ```
 
 - `key` &mdash; `indexDB` item key to register
