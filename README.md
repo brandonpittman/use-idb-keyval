@@ -35,3 +35,6 @@ useIdb(key, initialValue, (inititalValue) => { doSomething(initialValue});
 - You can pass a function as the third parameter to do a computation with the initial value.
 
 > Inspired by [idb-keyval](https://github.com/jakearchibald/idb-keyval)
+
+
+<a href="https://www.buymeacoffee.com/blp" target="_blank"><img width="217" height="60" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee"></a>
