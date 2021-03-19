@@ -20,7 +20,7 @@ const Demo = () => {
 };
 ```
 
-WHen using the setter function, you can either pass a new value or a function that takes the previous value.
+When using the setter function, you can either pass a new value or a function that takes the previous value.
 
 ## API
 
