@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 
 import { get, set } from "./idb.js";
 
-export default function useIdbKeyval(key, initialState, initFn) {
+const useIdbKeyval = (key, initialState, initFn) => {
   const [item, setItem] = useState(initialState);
 
   useEffect(async () => {
@@ -20,21 +20,27 @@ export default function useIdbKeyval(key, initialState, initFn) {
 
   return [
     item,
-    (value) => {
-      if (typeof value === "function") {
-        setItem((prev) => {
-          const prevValue = value(prev);
-          set(key, prevValue);
-          return prevValue;
-        });
-      } else {
-        setItem(value);
-        set(key, value);
-      }
-    },
-    () => {
+    useCallback(
+      (value) => {
+        if (typeof value === "function") {
+          setItem((prev) => {
+            const prevValue = value(prev);
+            set(key, prevValue);
+            return prevValue;
+          });
+        } else {
+          setItem(value);
+          set(key, value);
+        }
+      },
+      [set, setItem]
+    ),
+    useCallback(() => {
       setItem(initialState);
       set(key, initialState);
-    },
+    }, [set, setItem]),
   ];
-}
+};
+
+export { useIdbKeyval, get, set };
+export default useIdbKeyval;
