@@ -2,7 +2,7 @@
 'use strict'
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./useidbkeyval.cjs.production.min.js')
+  module.exports = require('./use-idb-keyval.cjs.production.min.js')
 } else {
-  module.exports = require('./useidbkeyval.cjs.development.js')
+  module.exports = require('./use-idb-keyval.cjs.development.js')
 }
