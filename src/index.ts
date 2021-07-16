@@ -2,12 +2,23 @@ import { useEffect, useCallback, useState } from 'react';
 
 import { get, set } from './idb';
 
-const useIdbKeyval = (
+const useIdbKeyval = <T>(
   key: string,
-  initialState: any,
-  initFn?: (initialState: any) => any
+  initialState: T,
+  initFn: (initialState: T) => any
 ) => {
   const [item, setItem] = useState(initialState);
+  const [saving, setSaving] = useState(false);
+
+  const safeSet = async (key: string, value: T) => {
+    if (saving) {
+      console.error('Already awaiting a set call.');
+    } else {
+      setSaving(true);
+      await set(key, value);
+      setSaving(false);
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -18,7 +29,7 @@ const useIdbKeyval = (
         } else {
           const initFnResult = initFn ? initFn(initialState) : null;
           setItem(initFnResult ? initFnResult : initialState);
-          set(key, initFnResult ? initFnResult : initialState);
+          safeSet(key, initFnResult ? initFnResult : initialState);
         }
       }
     })();
@@ -31,20 +42,20 @@ const useIdbKeyval = (
         if (typeof value === 'function') {
           setItem((prev: typeof item) => {
             const prevValue = value(prev);
-            set(key, prevValue);
+            safeSet(key, prevValue);
             return prevValue;
           });
         } else {
           setItem(value);
-          set(key, value);
+          safeSet(key, value);
         }
       },
-      [set, setItem]
+      [safeSet, setItem]
     ),
     useCallback(() => {
       setItem(initialState);
-      set(key, initialState);
-    }, [set, setItem]),
+      safeSet(key, initialState);
+    }, [safeSet, setItem]),
   ];
 };
 
