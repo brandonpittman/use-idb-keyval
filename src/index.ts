@@ -1,23 +1,15 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { get, set } from './idb';
 
-const useIdbKeyval = <T>(
-  key: string,
-  initialState: T,
-  initFn?: (initialState: T) => any
-) => {
+function useIdbKeyval<S>(key: string, initialState: S): any;
+function useIdbKeyval<S>(key: string, initialState: () => S): any {
   const [item, setItem] = useState(initialState);
-  const [saving, setSaving] = useState(false);
-
-  const safeSet = async (key: string, value: T) => {
-    if (saving) {
-      console.error('Already awaiting a set call.');
-    } else {
-      setSaving(true);
-      await set(key, value);
-      setSaving(false);
-    }
+  const reset = () => {
+    const res =
+      typeof initialState === 'function' ? initialState() : initialState;
+    setItem(res);
+    set(key, res);
   };
 
   useEffect(() => {
@@ -27,9 +19,10 @@ const useIdbKeyval = <T>(
         if (value) {
           setItem(value);
         } else {
-          const initFnResult = initFn ? initFn(initialState) : null;
-          setItem(initFnResult ? initFnResult : initialState);
-          safeSet(key, initFnResult ? initFnResult : initialState);
+          const valueToSet =
+            typeof initialState === 'function' ? initialState() : initialState;
+          setItem(valueToSet);
+          set(key, valueToSet);
         }
       }
     })();
@@ -37,27 +30,21 @@ const useIdbKeyval = <T>(
 
   return [
     item,
-    useCallback(
-      value => {
-        if (typeof value === 'function') {
-          setItem((prev: typeof item) => {
-            const prevValue = value(prev);
-            safeSet(key, prevValue);
-            return prevValue;
-          });
-        } else {
-          setItem(value);
-          safeSet(key, value);
-        }
-      },
-      [safeSet, setItem]
-    ),
-    useCallback(() => {
-      setItem(initialState);
-      safeSet(key, initialState);
-    }, [safeSet, setItem]),
-  ];
-};
+    (value: any) => {
+      if (typeof value === 'function') {
+        setItem((prev: typeof item) => {
+          const prevValue = value(prev);
+          set(key, prevValue);
+          return prevValue;
+        });
+      } else {
+        setItem(value);
+        set(key, value);
+      }
+    },
+    reset,
+  ] as const;
+}
 
 export { useIdbKeyval, get, set };
 export default useIdbKeyval;
