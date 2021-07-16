@@ -5,7 +5,7 @@ import { get, set } from './idb';
 const useIdbKeyval = (
   key: string,
   initialState: unknown,
-  initFn: (initialState: unknown) => unknown
+  initFn?: (initialState: unknown) => unknown
 ) => {
   const [item, setItem] = useState(initialState);
 
