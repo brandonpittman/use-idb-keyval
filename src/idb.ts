@@ -23,10 +23,11 @@ export const call: any = async (
   });
 };
 
+export const remove = async (key: string) =>
+  await call('readwrite', 'delete', key);
+
 export const get = async (key: string) =>
   (await call('readonly', 'get', key)).result;
 
 export const set = async (key: string, value: any) =>
-  value === undefined
-    ? await call('readwrite', 'delete', key)
-    : await call('readwrite', 'put', value, key);
+  await call('readwrite', 'put', value, key);

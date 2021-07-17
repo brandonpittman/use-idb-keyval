@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import { get, set } from './idb';
+import { get, set, remove } from './idb';
 
 function useIdbKeyval<S>(key: string, initialState: S): any;
 function useIdbKeyval<S>(key: string, initialState: () => S): any {
   const [item, setItem] = useState(initialState);
+
   const reset = () => {
     const res =
       typeof initialState === 'function' ? initialState() : initialState;
-    setItem(res);
-    set(key, res);
+    setItem(() => res);
+    remove(key);
   };
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function useIdbKeyval<S>(key: string, initialState: () => S): any {
         }
       }
     })();
-  }, [key]);
+  }, [key, item]);
 
   return [
     item,
@@ -46,5 +47,5 @@ function useIdbKeyval<S>(key: string, initialState: () => S): any {
   ] as const;
 }
 
-export { useIdbKeyval, get, set };
+export { useIdbKeyval, get, set, remove };
 export default useIdbKeyval;
