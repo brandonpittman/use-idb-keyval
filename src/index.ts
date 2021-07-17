@@ -27,7 +27,7 @@ function useIdbKeyval<S>(key: string, initialState: () => S): any {
         }
       }
     })();
-  }, [key, item]);
+  }, [key, item, initialState]);
 
   return [
     item,
