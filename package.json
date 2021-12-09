@@ -23,10 +23,11 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
+  "simple-git-hooks": {
+    "pre-commit": "./node_modules/.bin/nano-staged"
+  },
+  "nano-staged": {
+    "*.ts": "tsdx lint"
   },
   "prettier": {
     "printWidth": 80,
@@ -51,9 +52,10 @@
     "@size-limit/preset-small-lib": "^5.0.1",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
-    "husky": "^7.0.1",
+    "nano-staged": "^0.4.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "simple-git-hooks": "^2.7.0",
     "size-limit": "^5.0.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0",
