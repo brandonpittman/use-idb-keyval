@@ -1,6 +1,6 @@
 # use-idb-keyval
 
-This is a React hook to help you use IndexedDB as an asynchronous replacement for `useLocalStorage`. 
+This is a React hook to help you use IndexedDB. 
 
 ## Usage
 
