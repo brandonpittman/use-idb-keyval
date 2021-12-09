@@ -1,0 +1,56 @@
+{
+  "version": "0.3.11",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "source": "src/index.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "microbundle --terser false",
+    "dev": "microbundle watch",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "name": "use-idb-keyval",
+  "author": "Brandon Pittman",
+  "size-limit": [
+    {
+      "path": "dist/use-idb-keyval.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/use-idb-keyval.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^5.0.1",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "microbundle": "^0.14.2",
+    "nano-staged": "^0.4.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "simple-git-hooks": "^2.7.0",
+    "size-limit": "^5.0.1",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
+  }
+}

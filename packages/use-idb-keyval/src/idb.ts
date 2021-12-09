@@ -17,9 +17,11 @@ export const call: any = async (
   const store = transaction.objectStore('idb');
 
   return new Promise((resolve, reject) => {
-    const req = store[method](...args);
-    transaction.oncomplete = () => resolve(req);
-    transaction.onabort = transaction.onerror = () => reject(transaction.error);
+    if (args) {
+      const req = store[method](...args);
+      transaction.oncomplete = () => resolve(req);
+      transaction.onabort = transaction.onerror = () => reject(transaction.error);
+    }
   });
 };
 
