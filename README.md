@@ -1,7 +1,7 @@
 # use-idb-keyval
 
 This is a React hook to help you use IndexedDB. 
-I 
+
 ## Usage
 
 ```javascript
