@@ -7,11 +7,13 @@ importers:
       nano-staged: ^0.4.5
       prettier: ^2.5.1
       simple-git-hooks: ^2.7.0
+      turbo: ^1.0.4
       use-idb-keyval: workspace:*
     devDependencies:
       nano-staged: 0.4.5
       prettier: 2.5.1
       simple-git-hooks: 2.7.0
+      turbo: 1.0.4
       use-idb-keyval: link:packages/use-idb-keyval
 
   packages/playground:
@@ -12800,6 +12802,14 @@ packages:
   /tty-browserify/0.0.0:
     resolution: {integrity: sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=}
 
+  /turbo/1.0.4:
+    resolution: {integrity: sha512-lPT/DNI7FiD+BBAjugyL5A24PA9g2DmLaErUCz6bGHfIlzPg1pawlX8GbZUCeCHA/DX/gCP8VP0BxGKb71c1Jw==}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      zlib: 1.0.5
+    dev: true
+
   /type-check/0.3.2:
     resolution: {integrity: sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=}
     engines: {node: '>= 0.8.0'}
@@ -13678,3 +13688,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: false
+
+  /zlib/1.0.5:
+    resolution: {integrity: sha1-bnyXL8NxxkWmr7A6sUdp3vEU/MA=}
+    engines: {node: '>=0.2.0'}
+    dev: true

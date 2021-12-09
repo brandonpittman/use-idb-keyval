@@ -19,7 +19,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle --terser false",
+    "build": "microbundle",
     "dev": "microbundle watch",
     "size": "size-limit",
     "analyze": "size-limit --why"
